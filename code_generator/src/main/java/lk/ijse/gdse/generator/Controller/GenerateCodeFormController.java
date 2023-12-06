@@ -1,5 +1,10 @@
 package lk.ijse.gdse.generator.Controller;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -202,6 +207,42 @@ public class GenerateCodeFormController   {
     }
 
     private void generateQRCode() {
+        String input1 = txtinput1.getText();
+        String input2 = txtinput2.getText();
+        System.out.println(flag);
+        int width = 200;
+        int height = 200;
+        if (flag.equals("Single")){
+            if (input1 != null){
+                QRCodeWriter qrCodeWriter = new QRCodeWriter();
+                BitMatrix bitMatrix;
+                try {
+                    bitMatrix = qrCodeWriter.encode(input1, BarcodeFormat.QR_CODE, width, height);
+                    generatedCodeImage = SwingFXUtils.toFXImage(MatrixToImageWriter.toBufferedImage(bitMatrix), null);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                throw new RuntimeException("\n Input filed is empty");
+            }
+        }else if (flag.equals("Double")){
+            if (input1 != null && input2 != null){
+                String combined = input1 + " | "+ input2;
+                QRCodeWriter qrCodeWriter = new QRCodeWriter();
+                BitMatrix bitMatrix;
+                try {
+                    bitMatrix = qrCodeWriter.encode(combined, BarcodeFormat.QR_CODE, width, height);
+                    generatedCodeImage = SwingFXUtils.toFXImage(MatrixToImageWriter.toBufferedImage(bitMatrix), null);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+
+            }else {
+                throw new RuntimeException("\n input filed are empty");
+            }
+        }
+
+
     }
 
     private void updatePreview() {
