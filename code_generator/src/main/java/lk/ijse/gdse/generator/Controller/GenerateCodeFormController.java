@@ -17,14 +17,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import lk.ijse.gdse.generator.util.Navigation;
 import lk.ijse.gdse.generator.util.Routes;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeFactory;
 import net.sourceforge.barbecue.BarcodeImageHandler;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -64,9 +67,6 @@ public class GenerateCodeFormController   {
     @FXML
     private JFXRadioButton rbSingle;
 
-//    @FXML
-//    private JFXTextArea txtInput;
-
     @FXML
     private TextField txtinput1;
 
@@ -77,33 +77,26 @@ public class GenerateCodeFormController   {
     private JFXButton btnExit;
 
     private String type;
-
     private String flag;
     Image fxImageBarCode;
-
     private Image generatedCodeImage;
-
     ImageView imageView;
     public void initialize(){
         txtinput1.setDisable(true);
         txtinput2.setDisable(true);
     }
-
-
     @FXML
     void CheckDoubleOnAction(ActionEvent event) {
         flag = "Double";
         txtinput1.setDisable(false);
         txtinput2.setDisable(false);
     }
-
     @FXML
     void CheckSingleOnAction(ActionEvent event) {
         flag = "Single";
         txtinput1.setDisable(false);
         txtinput2.setDisable(true);
     }
-
     @FXML
     public void generateCodeOnAction(ActionEvent event) {
         if (rbBarCode.isSelected()) {
@@ -202,8 +195,6 @@ public class GenerateCodeFormController   {
                 throw new RuntimeException("\n input filed are empty");
             }
         }
-
-
     }
 
     private void generateQRCode() {
@@ -236,13 +227,10 @@ public class GenerateCodeFormController   {
                 } catch (WriterException e) {
                     e.printStackTrace();
                 }
-
             }else {
                 throw new RuntimeException("\n input filed are empty");
             }
         }
-
-
     }
 
     private void updatePreview() {
@@ -253,7 +241,55 @@ public class GenerateCodeFormController   {
 
     @FXML
     public void saveOnAction(ActionEvent event) {
+        if (rbBarCode.isSelected()) {
+            saveBarCode();
+        } else if (rbQrCode.isSelected()) {
+            saveQrCode();
+        }
+    }
 
+    private void saveQrCode() {
+
+    }
+
+    private void saveBarCode() {
+        if (fxImageBarCode != null) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save " + type);
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png"));
+            File fileToSave = fileChooser.showSaveDialog(null);
+
+            if (fileToSave != null) {
+                try {
+                    // Ensure the selected file has .png extension
+                    if (!fileToSave.getName().toLowerCase().endsWith(".png")) {
+                        fileToSave = new File(fileToSave.getAbsolutePath() + ".png");
+                    }
+
+                    ImageIO.write(SwingFXUtils.fromFXImage(fxImageBarCode, null), "png", fileToSave);
+
+                    // Show a success message
+                    System.out.println(type + " saved successfully!");
+                    txtinput1.setText("");
+                    txtinput2.setText("");
+                    txtinput1.setDisable(true);
+                    txtinput2.setDisable(true);
+                    imgchange.setVisible(true);
+                    imageView.setVisible(false);
+
+                    rbQrCode.setSelected(false);
+                    rbBarCode.setSelected(false);
+                    rbDouble.setSelected(false);
+                    rbSingle.setSelected(false);
+
+                    imgchange.setImage(new Image("asstes/qr1.png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    // Show an error message
+                    System.out.println("Error saving " + type);
+                }
+            }
+        }
     }
 
     @FXML
@@ -263,7 +299,6 @@ public class GenerateCodeFormController   {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 }
