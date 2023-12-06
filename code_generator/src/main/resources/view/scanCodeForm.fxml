@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="497.0" prefWidth="826.0" stylesheets="@../stylesheet/scanFrame.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.generator.Controller.ScanCodeFormController">
+   <children>
+      <ImageView fitHeight="552.0" fitWidth="882.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asstes/3.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="inPane" layoutX="32.0" layoutY="73.0" prefHeight="361.0" prefWidth="822.0">
+         <children>
+            <AnchorPane layoutX="105.0" layoutY="65.0" prefHeight="225.0" prefWidth="225.0" style="-fx-background-color: #001F3F; -fx-border-color: #BED754;">
+               <children>
+                  <ImageView fx:id="imgchange" fitHeight="225.0" fitWidth="225.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asstes/qr1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Text fill="#f2f1f1" fontSmoothingType="LCD" layoutX="107.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Generated Code Here" textAlignment="CENTER" wrappingWidth="230.13690185546875">
+               <font>
+                  <Font name="Cooper Black" size="20.0" />
+               </font>
+            </Text>
+            <JFXButton fx:id="btnOpen" layoutX="155.0" layoutY="304.0" onAction="#openCodeOnAction" prefHeight="41.0" prefWidth="129.0" text="Open Code" />
+            <JFXButton fx:id="btnDecode" layoutX="537.0" layoutY="49.0" onAction="#scanCodeOnAction" prefHeight="41.0" prefWidth="129.0" text="Decode" />
+            <JFXTextArea layoutX="441.0" layoutY="114.0" prefHeight="212.0" prefWidth="323.0" />
+         </children>
+      </Pane>
+      <JFXButton fx:id="btnExit" layoutX="12.0" layoutY="450.0" onAction="#BackOnAction" prefHeight="36.0" prefWidth="80.0" text="Back" />
+   </children>
+</AnchorPane>
