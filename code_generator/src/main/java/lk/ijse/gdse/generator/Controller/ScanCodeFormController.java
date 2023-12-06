@@ -3,6 +3,7 @@ package lk.ijse.gdse.generator.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -30,6 +31,11 @@ public class ScanCodeFormController {
 
     @FXML
     private AnchorPane pane;
+    @FXML
+    private TextField txtinput1;
+
+    @FXML
+    private TextField txtinput2;
 
     @FXML
     void BackOnAction(ActionEvent event) {
