@@ -2,7 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,7 +20,7 @@
       </ImageView>
       <Pane fx:id="inPane" layoutX="32.0" layoutY="73.0" prefHeight="361.0" prefWidth="822.0">
          <children>
-            <AnchorPane layoutX="523.0" layoutY="59.0" prefHeight="225.0" prefWidth="225.0" style="-fx-background-color: #001F3F; -fx-border-color: #BED754;">
+            <AnchorPane fx:id="imgCodePane" layoutX="523.0" layoutY="59.0" prefHeight="225.0" prefWidth="225.0" style="-fx-background-color: #001F3F; -fx-border-color: #BED754;">
                <children>
                   <ImageView fx:id="imgchange" fitHeight="225.0" fitWidth="225.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -34,12 +34,12 @@
                   <Font name="Cooper Black" size="20.0" />
                </font>
             </Text>
-            <Text fill="#f2f1f1" fontSmoothingType="LCD" layoutX="114.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Code Type Here" textAlignment="CENTER" wrappingWidth="215.02581787109375">
+            <Text fill="#f2f1f1" fontSmoothingType="LCD" layoutX="98.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Code Type Here" textAlignment="CENTER" wrappingWidth="261.2480773925781">
                <font>
                   <Font name="Cooper Black" size="20.0" />
                </font>
             </Text>
-            <JFXRadioButton fx:id="rbQrCode" layoutX="57.0" layoutY="85.0" onAction="#QrcodeOnAction" text="Qr Code" textFill="#fff9f9">
+            <JFXRadioButton fx:id="rbQrCode" layoutX="91.0" layoutY="44.0" text="Qr Code" textFill="#fff9f9">
                <selectedColor>
                   <Color red="0.7450980544090271" green="0.843137264251709" blue="0.3294117748737335" />
                </selectedColor>
@@ -47,7 +47,7 @@
                   <Font name="Elephant Italic" size="16.0" />
                </font>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="rbBarCode" layoutX="237.0" layoutY="85.0" onAction="#BarcodeOnAction" text="Bar Code" textFill="#fff9f9">
+            <JFXRadioButton fx:id="rbBarCode" layoutX="237.0" layoutY="43.0" text="Bar Code" textFill="#fff9f9">
                <selectedColor>
                   <Color red="0.7450980544090271" green="0.843137264251709" blue="0.3294117748737335" />
                </selectedColor>
@@ -55,14 +55,41 @@
                   <Font name="Elephant Italic" size="16.0" />
                </font>
             </JFXRadioButton>
-            <Text fill="#f2f1f1" fontSmoothingType="LCD" layoutX="61.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter text:" textAlignment="CENTER" wrappingWidth="183.02581787109375">
+            <Text fill="#f2f1f1" fontSmoothingType="LCD" layoutX="61.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter text 1:" textAlignment="CENTER" wrappingWidth="183.02581787109375">
                <font>
                   <Font name="Cooper Black" size="20.0" />
                </font>
             </Text>
-            <JFXTextArea fx:id="txtInput" layoutX="115.0" layoutY="181.0" prefHeight="92.0" prefWidth="339.0" />
-            <JFXButton fx:id="btngenerate" layoutX="216.0" layoutY="301.0" onAction="#generateCodeOnAction" prefHeight="41.0" prefWidth="129.0" text="Generate" />
-            <JFXButton fx:id="btnsave" layoutX="563.0" layoutY="301.0" onAction="#saveOnAction" prefHeight="41.0" prefWidth="129.0" text="Save" />
+            <JFXButton fx:id="btngenerate" layoutX="216.0" layoutY="305.0" onAction="#generateCodeOnAction" prefHeight="41.0" prefWidth="129.0" text="Generate" />
+            <JFXButton fx:id="btnsave" layoutX="563.0" layoutY="306.0" onAction="#saveOnAction" prefHeight="41.0" prefWidth="129.0" text="Save" />
+            <TextField fx:id="txtinput1" layoutX="116.0" layoutY="181.0" prefHeight="34.0" prefWidth="256.0" />
+            <Text fill="#f2f1f1" fontSmoothingType="LCD" layoutX="61.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter text 2:" textAlignment="CENTER" wrappingWidth="183.02581787109375">
+               <font>
+                  <Font name="Cooper Black" size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtinput2" layoutX="116.0" layoutY="257.0" prefHeight="34.0" prefWidth="256.0" />
+            <Text fill="#f2f1f1" fontSmoothingType="LCD" layoutX="99.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Input Count Here" textAlignment="CENTER" wrappingWidth="261.2480773925781">
+               <font>
+                  <Font name="Cooper Black" size="20.0" />
+               </font>
+            </Text>
+            <JFXRadioButton fx:id="rbSingle" layoutX="92.0" layoutY="116.0" onAction="#CheckSingleOnAction" text="Single" textFill="#fff9f9">
+               <selectedColor>
+                  <Color red="0.7450980544090271" green="0.843137264251709" blue="0.3294117748737335" />
+               </selectedColor>
+               <font>
+                  <Font name="Elephant Italic" size="16.0" />
+               </font>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="rbDouble" layoutX="238.0" layoutY="115.0" onAction="#CheckDoubleOnAction" text="Double" textFill="#fff9f9">
+               <selectedColor>
+                  <Color red="0.7450980544090271" green="0.843137264251709" blue="0.3294117748737335" />
+               </selectedColor>
+               <font>
+                  <Font name="Elephant Italic" size="16.0" />
+               </font>
+            </JFXRadioButton>
          </children>
       </Pane>
       <JFXButton fx:id="btnExit" layoutX="12.0" layoutY="450.0" onAction="#BackOnAction" prefHeight="36.0" prefWidth="80.0" text="Back" />
