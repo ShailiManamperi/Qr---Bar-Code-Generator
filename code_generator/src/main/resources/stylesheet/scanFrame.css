@@ -1,0 +1,32 @@
+#btnOpen,#btnDecode,#btnExit {
+    -fx-background-color:
+            #090a0c,
+            linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+            linear-gradient(#20262b, #191d22),
+            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+}
+#btnOpen:hover, #btnDecode:hover,#btnExit:hover{
+    -fx-background-color:
+            #090a0c,
+            linear-gradient(#52606b 0%, #2f353a 20%, #293035 100%),
+            linear-gradient(#2c3237, #25292e),
+            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,1), rgba(255,255,255,0.1));
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.8) , 7, 0.0 , 0 , 2 );
+}
+
+#btnOpen:pressed,#btnDecode:pressed ,#btnExit:pressed{
+    -fx-background-color:
+            #090a0c,
+            linear-gradient(#1f2429 0%, #090a0c 20%, #090a0c 100%),
+            linear-gradient(#090a0c, #090a0c),
+            radial-gradient(center 50% 0%, radius 100%, rgba(0,0,0,0.9), rgba(255,255,255,0));
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.8) , 3, 0.0 , 0 , 2 );
+}
