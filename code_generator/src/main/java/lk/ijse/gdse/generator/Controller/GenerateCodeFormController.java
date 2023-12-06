@@ -249,6 +249,42 @@ public class GenerateCodeFormController   {
     }
 
     private void saveQrCode() {
+        if (generatedCodeImage != null) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save " + type);
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png"));
+            File fileToSave = fileChooser.showSaveDialog(null);
+
+            if (fileToSave != null) {
+                try {
+                    // Ensure the selected file has .png extension
+                    if (!fileToSave.getName().toLowerCase().endsWith(".png")) {
+                        fileToSave = new File(fileToSave.getAbsolutePath() + ".png");
+                    }
+
+                    ImageIO.write(SwingFXUtils.fromFXImage(generatedCodeImage, null), "png", fileToSave);
+
+                    // Show a success message
+                    System.out.println(type + " saved successfully!");
+                    txtinput1.setText("");
+                    txtinput2.setText("");
+                    txtinput1.setDisable(true);
+                    txtinput2.setDisable(true);
+                    imgchange.setVisible(true);
+
+                    rbQrCode.setSelected(false);
+                    rbBarCode.setSelected(false);
+                    rbDouble.setSelected(false);
+                    rbSingle.setSelected(false);
+
+                    imgchange.setImage(new Image("asstes/qr1.png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    // Show an error message
+                    System.out.println("Error saving " + type);
+                }
+            }
+        }
 
     }
 
